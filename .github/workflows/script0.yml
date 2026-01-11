@@ -18,7 +18,7 @@ jobs:
         ORIGIN_HOST=${{ secrets.DATABRICKS_ORIGIN_HOST }}
         ORIGIN_TOKEN=${{ secrets.DATABRICKS_ORIGIN_TOKEN }}
         NOTEBOOK_BASE="/Workspace/Users/juandaniel.v.r.1910_outlook.es#ext#@juandanielvr1910outlook.onmicrosoft.com/Clase12/source_ntbk"
-        NOTEBOOKS=("ntbk_1" "ntbk_2")  # Agrega más según necesitesas
+        NOTEBOOKS=("ntbk_1" "ntbk_2" "Disparador")  # Agrega más según necesitesas
         mkdir -p notebooks_to_deploy
         for nb in "${NOTEBOOKS[@]}"; do
           echo "Exportando $nb en modo raw..."
@@ -32,7 +32,7 @@ jobs:
       run: |
         DEST_HOST=${{ secrets.DATABRICKS_DEST_HOST }}
         DEST_TOKEN=${{ secrets.DATABRICKS_DEST_TOKEN }}
-        DEST_BASE="/py/script/main"
+        DEST_BASE="/py/scripts/main"
         for file in notebooks_to_deploy/*.py; do
           name=$(basename "$file" .py)
           dest_path="$DEST_BASE/$name"
